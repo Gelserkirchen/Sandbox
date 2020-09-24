@@ -2,6 +2,7 @@
 
 html {
   box-sizing: border-box;
+  display: block;
 }
 *,
 *:before,
@@ -10,6 +11,7 @@ html {
 }
 
 .kurs {
+  width: 100%;
   margin: 0px;
   padding: 0px;
   font-family: "Open Sans", sans-serif;
@@ -33,6 +35,9 @@ li {
   padding: 80px 30px;
   display: flex;
   justify-content: space-between;
+}
+
+.top {
   position: relative;
 }
 
@@ -62,10 +67,11 @@ body {
 
   box-shadow: 0px 10.8568px 43.4271px rgba(0, 0, 0, 0.1);
   width: 100%;
-  z-index: 2;
+  z-index: 200;
   margin: 0;
   background-position: 50% 50%;
   background-size: cover;
+  position: relative;
 }
 
 .title__section-info {
@@ -79,6 +85,7 @@ body {
   line-height: 4rem;
   letter-spacing: 0.03em;
   padding: 40px 0px 10px;
+  margin-left: -4px;
 }
 
 .title__text-sub {
@@ -88,13 +95,16 @@ body {
   line-height: 145.18%;
 }
 
-.qr__code-text {
+.qr__margin {
   max-width: 350px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.qr__code-text {
   font-weight: 300;
   font-size: 1.2rem;
   line-height: 2rem;
-  margin-left: 20px;
-  margin-right: 20px;
 }
 
 .title__picture {
@@ -115,12 +125,6 @@ body {
 .qr__section {
   padding-top: 50px;
   display: flex;
-}
-
-.qu__code-image {
-}
-
-.kurs__logo {
 }
 
 /* Pictures */
@@ -144,23 +148,106 @@ body {
 /* 
    <div class="cubes">
       <div class="first"></div>
-      <dvi class="secon"></dvi>
+      <dvi class="secon"></dvi> _--------------- 2 -------------------------------------
 
 */
 
-.cubes {
-  display: block;
+.advantages {
+  min-height: 500px;
+  z-index: 1;
   position: relative;
 }
 
-.first {
-  width: 50px;
-  height: 50px;
-  color: red;
+.advantages__inner {
+  min-height: 800px;
+  width: auto;
+  background-image: url(../public/img/back_second_section.jpg);
+  background-repeat: no-repeat;
+  background-size: 800px auto;
+  right: 0px;
+  z-index: 1;
 }
 
-.secon {
-  width: 50px;
-  height: 50px;
-  color: blue;
+.advantages__list {
+  max-width: 600px;
+  margin-left: 850px;
 }
+
+.adv {
+  margin-top: 30px;
+}
+
+.adv__top__title {
+  padding-top: 70px;
+}
+
+.adv__margin {
+  padding-top: 5px;
+}
+
+.hr__services::before {
+  font-family: "icomoon";
+  position: absolute;
+  content: "\e902";
+  align-self: left;
+  color: #d2d9e4;
+  margin-left: -49px;
+}
+
+.business__services::before {
+  font-family: "icomoon";
+  position: absolute;
+  content: "\e901";
+  align-self: left;
+  color: #d2d9e4;
+  margin-left: -50px;
+}
+
+.ai__services::before {
+  font-family: "icomoon";
+  position: absolute;
+  content: "\e900";
+  align-self: left;
+  color: #d2d9e4;
+  margin-left: -50px;
+}
+
+/* 
+   --------------------------
+*/
+
+.footer {
+  background: radial-gradient(
+      21.67% 56.95% at 21.35% 75.32%,
+      rgba(244, 227, 231, 0.45) 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    linear-gradient(
+      105.62deg,
+      rgba(223, 242, 255, 0.3) 0.43%,
+      #e9e9e9 62.04%,
+      #e2ecfc 98.19%
+    );
+  box-shadow: 0px -5.00112px 20.0045px rgba(0, 0, 0, 0.1);
+
+  height: 400px;
+  width: 100%;
+  z-index: 200;
+  margin: 0;
+  background-position: 50% 50%;
+  background-size: cover;
+  position: relative;
+}
+
+
+.footer__position
+{
+  display: block;
+}
+
+.links {
+  display: block;
+}
+
+
+
