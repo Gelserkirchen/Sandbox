@@ -4,11 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="favicon.ico" />
-    
+    <link rel="stylesheet" href="styles/button.css" />
     <link rel="stylesheet" href="styles/main.css" />
     <link rel="stylesheet" href="styles/styles.css" />
     <link rel="stylesheet" href="styles/media.css" />
-    
+
     <title>Мобильное приложение КУРС</title>
   </head>
 
@@ -26,16 +26,35 @@
             </div>
           </div>
           <div class="qr__section">
-            <div class="qu__code-image">
-              <img class="qr__picture" src="img/qr_ios.svg" alt="" />
+
+            <div class="buttons">
+              <!-- <button class="button">
+              Установить
+              </button> -->
+              <button class="button button__iOS" formaction="https://www.w3docs.com">
+                Установить для iOS
+              </button>
+
+              <button class="button button__android" formaction="https://www.w3docs.com">
+                Установить для Android
+              </button>
             </div>
-            <div class="qr__code-text qr__margin">
-              Вы можете установить приложение, открыв ссылку
-              <strong>kurs.sberbank.ru</strong> со смартфона или отсканировав
-              QR-код
-            </div>
+
+            
+              <div class="qu__code-image">
+                <img class="qr__picture" src="img/qr_ios.svg" alt="" />
+              </div>
+              <div id="visable" class="qr__code-text qr__margin">
+                Вы можете установить приложение, открыв ссылку
+                <strong>kurs.sberbank.ru</strong> со смартфона или отсканировав
+                QR-код
+              </div>
+            
+            
           </div>
         </div>
+
+
 
         <div class="title__picture">
           <img
@@ -44,10 +63,14 @@
             alt="kurs_image"
           />
         </div>
+
+
+    
+    
       </div>
     </section>
 
-    <!-- <section class="advantages">
+    <section class="advantages">
       <div class="advantages__inner">
         <div class="advantages__list">
           <div class="title__text-main adv__top__title">
@@ -93,8 +116,10 @@
             </div>
           </div>
         </div>
-      </div> -->
+      </div> 
 
     </footer>
+    <script src="/public/js/button.js"></script>  
   </body>
+  
 </html>
