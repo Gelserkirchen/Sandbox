@@ -333,6 +333,12 @@
     padding-right: 15px;
   }
 
+  .button {
+    height: 50px;
+    max-width: 450px;
+    font-size: 0.8rem;
+  }
+
 
 }
 
@@ -341,6 +347,12 @@
   .phone__picture {
     right: 0px;
     max-width: 200px;
+  }
+
+  .button {
+    height: 50px;
+    max-width: 450px;
+    font-size: 0.8rem;
   }
 
 }
