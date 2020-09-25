@@ -305,6 +305,12 @@
 
 
 @media only screen and (max-width: 520px) {
+  .title__text-main.origin {
+    font-size: 1.7rem;
+    margin-top: 20px;
+    /* width: 560px; */
+  }
+
   .kurs__picture {
     max-width: 50px;
   }
