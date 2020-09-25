@@ -358,6 +358,16 @@
     width: 100%;
   }
 
+  .button {
+    height: 50px;
+    max-width: 450px;
+    font-size: 0.8rem;
+  }
+
+  .adv {
+    font-size: 1rem;
+    margin-top: 20px;
+  }
 
   .phone__picture {
     display: none;
