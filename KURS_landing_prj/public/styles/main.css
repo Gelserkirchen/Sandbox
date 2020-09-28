@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700;800&display=swap");
+/*  */
+
 
 html {
   box-sizing: border-box;
@@ -179,12 +181,13 @@ body {
 .advantages__inner {
   min-height: 800px;
   width: auto;
-  background-image: url(/public/img/back_second_section.jpg);
+  background-image: url("/public/img/back_second_section.jpg");
   background-repeat: no-repeat;
   background-size: 800px auto;
   right: 0px;
   z-index: 1;
 }
+
 
 .advantages__list {
   max-width: 600px;
@@ -299,7 +302,3 @@ body {
   font-weight: 700;
 }
 
-
-.button {
-  
-}
