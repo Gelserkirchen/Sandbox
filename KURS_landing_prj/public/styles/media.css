@@ -5,20 +5,14 @@
 }
 
 @media only screen and (max-width: 1386px) {
-  /* min-width: 80%;
-      min-height: 330px; */
-  /* background-image: none; */
-  /* float: left; */
-  /* content: ""; */
-  /* clear: both; */
-  /* min-width: 465px; */
+
   .phone__picture {
     right: 0px;
     max-width: 560px;
   }
 
   .advantages__inner {
-    /* background-image: none; */
+    
   }
 
   .advantages__list {
