@@ -32,20 +32,57 @@
               Установить
               </button> -->
               <button
+                id="myBtn"
                 class="button button__iOS"
-                formaction="https://www.w3docs.com"
                 onclick="location.href='itms-services://?action=download-manifest&amp;url=https://a01j1e839f7f.ru1.hana.ondemand.com/sberbank/sf/distr_storage/mfp6.plist'"
               >
                 Установить для iOS
               </button>
 
+              <!-- The Modal for iOS-->
+              <div id="myModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <strong>После установки нужно:</strong>
+                  <p>Перейти в "Настройки"</p>
+                  <img src="img/arrow.svg" alt="arrow">
+                  <p>"Основные"</p>
+                  <img src="img/arrow.svg" alt="arrow">
+                  <p>"Профили и управление устройством"</p>
+                  <img src="img/arrow.svg" alt="arrow">
+                  <p>"Sberbank"</p>
+                  <img src="img/arrow.svg" alt="arrow">
+                  <p>Нажмите "Доверять Sberbank"</p>
+                  <p><br/></p>
+                  <strong>Установка началась, КУРС уже ждет вас на домашнем экране</strong>
+                </div>
+              </div>
+
               <button
+                id="myBtnAndroid"
                 class="button button__android"
-                formaction="https://www.w3docs.com"
                 onclick="location.href='https://a01j1e839f7f.ru1.hana.ondemand.com/sberbank/sf/distr_storage/app-kurs.apk'"
               >
                 Установить для Android
               </button>
+
+              <!-- The Modal for Android-->
+              <div id="myModalAndroid" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <strong>Устройство запросит подтвердить установку из ненадежного источника:</strong>
+                  <p>Перейдите в "Настройки" во время установки</p>
+                  <img src="img/arrow.svg" alt="arrow">
+                  <p>Включите переключатель</p>
+                  <img src="img/arrow.svg" alt="arrow">
+                  <p>Нажмите на устройстве на кнопку "назад"</p>
+                </div>
+              </div>
+
+              
+
             </div>
 
             <div class="qu__code-image">
@@ -126,5 +163,44 @@
         </div>
       </div>
     </footer>
+
+
+    <!-- SCRIPT -->
+    <script>
+      // Get the modal
+      var modal = document.getElementById("myModal");
+      var modal = document.getElementById("myModalAndroid");
+      
+      // Get the button that opens the modal
+      var btn = document.getElementById("myBtn");
+      // Get the button that opens the modal (for Android)
+      var btnAndroid = document.getElementById("myBtnAndroid");
+      
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+      
+      // When the user clicks the button, open the modal 
+      btn.onclick = function() {
+        modal.style.display = "block";
+      }
+
+      // When the user clicks the button, open the modal 
+      btnAndroid.onclick = function() {
+        modal.style.display = "block";
+      }
+      
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+      
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+      </script>
+
   </body>
 </html>
