@@ -1,36 +1,43 @@
-let requestUrl = 'https://jsonplaceholder.typicode.com/users';
+const MyNumber = 55
+console.log(localStorage.getItem('number'));
 
-function sendRequest(method, url, body = null) {
-    return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
-    xhr.open(method, url);
-    xhr.responseType = 'json';
-    xhr.setRequestHeader('Content-Type', 'application/json');
+// localStorage.setItem('number', MyNumber)
+// console.log(localStorage.getItem('number'));
+
+
+// let requestUrl = 'https://jsonplaceholder.typicode.com/users';
+
+// function sendRequest(method, url, body = null) {
+//     return new Promise((resolve, reject) => {
+//     const xhr = new XMLHttpRequest();
+//     xhr.open(method, url);
+//     xhr.responseType = 'json';
+//     xhr.setRequestHeader('Content-Type', 'application/json');
     
-    xhr.onload = () => {
-        if (xhr.status >= 400) {
-            console.error(xhr.response);
-        } else {
-            console.log(xhr.response);
-        }
-    }
+//     xhr.onload = () => {
+//         if (xhr.status >= 400) {
+//             console.error(xhr.response);
+//         } else {
+//             console.log(xhr.response);
+//         }
+//     }
     
-    xhr.onerror = () => {console.log('error')}
-    xhr.send(JSON.stringify(body));
+//     xhr.onerror = () => {console.log('error')}
+//     xhr.send(JSON.stringify(body));
 
-    })
-}
+//     })
+// }
 
-// sendRequest('GET', requestUrl)
+// // sendRequest('GET', requestUrl)
+// // .then(data => console.log(data))
+// // .catch(err => console.log(err))
+
+// sendRequest('POST', requestUrl, {
+//     name: 'Andrei', 
+//     age: 23
+// })
 // .then(data => console.log(data))
 // .catch(err => console.log(err))
-
-sendRequest('POST', requestUrl, {
-    name: 'Andrei', 
-    age: 23
-})
-.then(data => console.log(data))
-.catch(err => console.log(err))
 
 
 // const people = [

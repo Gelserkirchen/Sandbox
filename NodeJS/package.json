@@ -1,0 +1,22 @@
+{
+  "name": "1.0.0",
+  "version": "1.0.0",
+  "description": "Node JS for my personal use",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "node",
+    "nodeJS"
+  ],
+  "author": "Andrei Tolstykh <forspamandtrash@list.com>",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
