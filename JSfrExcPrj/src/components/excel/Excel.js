@@ -1,46 +1,41 @@
 // eslint-disable-next-line require-jsdoc
 // import {Options as $el} from "webpack";
 import {$} from '@core/Dom';
+import {Emitter} from '@core/Emitter';
 
 export class Excel {
   constructor(selector, options) {
     this.$el = $(selector);
     this.components = options.components || []
+    this.emitter = new Emitter()
   }
 
   getRoot() {
-    // eslint-disable-next-line no-undef
     const $root = $.create('div', 'excel')
+    const componentOptions = {
+      emitter: this.emitter,
+    }
 
-    this.components.forEach(Component => {
+    this.components = this.components.map(Component => {
       const $el = $.create('div', Component.className);
-      const component = new Component($el);
+      const component = new Component($el, componentOptions);
       $el.html(component.toHTML());
       $root.append($el);
+      return component
     })
 
     return $root
   }
 
   render() {
-    // console.log(this.$el);
-    // this.$el.insertAdjacentHTML('afterbegin', `<h1>Test</h1>`);
     this.$el.append(this.getRoot());
+    this.components.forEach(component => {
+      component.init();
+    })
+  }
+
+  destroy() {
+    this.components.forEach(component => component.destroy())
   }
 }
 
-
-// const $root = document.createElement('div');
-// $root.classList.add('excel');
-//
-// this.components.forEach(Component => {
-//
-// })
-// return $root;
-
-
-// const $el = document.createElement('div') // create div
-// $el.classList.add(Component.className); // add class to element
-// const component = new Component($el); // component from element
-// $el.innerHTML = component.toHTML(); // html from component
-// $root.append($el); // add element to render
