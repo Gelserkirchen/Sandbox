@@ -27,18 +27,6 @@ html {
     flex-direction: column;
   }
 
-
-#text {
-    position: absolute;
-    bottom: 120px;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
-    font-size: 1.7rem;
-    color: #777777;
-    align-self: center;
-    text-align: center;
-}
-
 #bm {
   position: absolute;
   max-width: 600px;
