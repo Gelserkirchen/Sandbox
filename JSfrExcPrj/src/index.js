@@ -4,11 +4,20 @@ import {Toolbar} from '@/components/toolbar/Toolbar';
 import {Excel} from '@/components/excel/Excel'
 import {Table} from '@/components/table/Table';
 import './scss/index.scss'
+import {createStore} from '@core/createStore';
+import {rootReducer} from '@/redux/rootReducer';
+import {excelStorage} from '@core/utils';
+import {initialState} from '@/redux/initialState';
 
-// eslint-disable-next-line no-undef
+const store = createStore(rootReducer, initialState)
+
+store.subscribe(state => {
+  excelStorage('excel', state)
+})
+
 const excel = new Excel('#app', {
-  // eslint-disable-next-line no-undef
   components: [Header, Toolbar, Formula, Table],
+  store,
 });
 
 excel.render();
