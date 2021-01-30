@@ -1,4 +1,5 @@
-// Purs function
+// Pures function
+
 export function capitalize(string) {
   if (typeof string !== 'string') {
     return ''
@@ -28,4 +29,42 @@ export function excelStorage(key, value = null) {
   } else {
     localStorage.setItem(key, JSON.stringify(value))
   }
+}
+
+export function isEqual(a, b) {
+  if (typeof a === 'object' && typeof b === 'object') {
+    return JSON.stringify(a) === JSON.stringify(b)
+  }
+  return a === b
+}
+
+export function camelToDashCase(text) {
+  return text.replace(/([A-Z])/g, (g) => `-${g[0].toLowerCase()}`);
+}
+
+export function toInlineStyles(styles = {}) {
+  return Object.keys(styles)
+      .map(key => `${camelToDashCase(key)}: ${styles[key]}`)
+      .join(';')
+}
+
+export function debounce(fn, wait) {
+  let timeout
+  return function(...args) {
+    const later = () => {
+      clearTimeout(timeout)
+      // fn.apply(this, ...args)
+      fn(...args)
+    }
+    clearTimeout(timeout)
+    timeout = setTimeout(later, wait)
+  }
+}
+
+export function clone(obj) {
+  return JSON.parse(JSON.stringify(obj))
+}
+
+export function preventDefault(event) {
+  event.preventDefault()
 }
