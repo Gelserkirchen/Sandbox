@@ -10,21 +10,7 @@
                       "n c";
 }
 
-.header {
-  grid-area: h;
-  background-color: green;
-}
-
-.header img {
-  width: 55px;
-}
-
-.nav {
-  grid-area: n;
-  background-color: blue;
-}
-
-.content {
+.app-wrapper-content {
   grid-area: c;
-  background-color: coral;
+  background-color: cornflowerblue;
 }
