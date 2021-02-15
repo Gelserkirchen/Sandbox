@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './MyPosts.module.css'
 import Post from './MyPost/Post';
+import {addPostAction, updPostAction} from '../../../redux/store';
 
 const MyPosts = (props) => {
 
@@ -15,12 +16,13 @@ const MyPosts = (props) => {
   const addPost = () => {
     // debugger
     const message = addPostLink.current.value
-    props.addPost(message)
+    props.dispatch(addPostAction(message))
   }
 
   const updPst = () => {
+    // debugger
     const message = addPostLink.current.value
-    props.updPost(message)
+    props.dispatch(updPostAction(message))
   }
 
   return (

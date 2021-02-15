@@ -1,4 +1,4 @@
-import state, {addPost, updatePost, subscribeRender} from './redux/state';
+import store from './redux/store';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -11,15 +11,18 @@ export const rerenderEntireTree = (state) => {
   ReactDOM.render(
     <React.StrictMode>
       <BrowserRouter>
-        <App dialogs={state.dialogPages.DialogsData} messages={state.dialogPages.MessagesData}
-             posts={state.profilePage} addPost = {addPost} updPosts = {updatePost}/>
+        <App dialogs={store.getState().dialogPages}
+             posts={store.getState().profilePage}
+             dispatch = {store.dispatch.bind(store)} />
       </BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root')
   );
 }
 
-subscribeRender(rerenderEntireTree(state))
+rerenderEntireTree(store.getState())
+
+store.subscribeRender(rerenderEntireTree)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
