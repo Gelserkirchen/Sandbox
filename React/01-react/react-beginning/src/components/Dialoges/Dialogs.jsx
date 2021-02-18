@@ -1,9 +1,8 @@
 import React from 'react'
 import styles from './Dialogs.module.css'
-// import {NavLink} from 'react-router-dom';
 import DialogItem from './DiaglogsItem/DialogsItem';
 import Message from './Messages/MessagesItems';
-import {addMessage, updMessageText} from '../../redux/store';
+import {addMessage, updMessageText} from '../../redux/reducers/messagesReducer';
 
 const Dialogs = (props) => {
   const propsData = props.dialogsState
