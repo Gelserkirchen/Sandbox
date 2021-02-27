@@ -4,7 +4,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter} from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
 
 export const rerenderEntireTree = (state) => {
@@ -12,7 +13,9 @@ export const rerenderEntireTree = (state) => {
   ReactDOM.render(
     <React.StrictMode>
       <BrowserRouter>
-        <App store={store} />
+        <Provider store={store}>
+          <App />
+        </Provider>
       </BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root')
@@ -22,11 +25,11 @@ export const rerenderEntireTree = (state) => {
 // debugger
 window.store = store
 rerenderEntireTree(store.getState())
-
-store.subscribe(() => {
-  const getState = store.getState()
-  rerenderEntireTree(getState)
-})
+//
+// store.subscribe(() => {
+//   const getState = store.getState()
+//   rerenderEntireTree(getState)
+// })
 
 // store.subscribeRender()
 

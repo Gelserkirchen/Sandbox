@@ -23,20 +23,17 @@ const postsReducer = (state = initialState, action) => {
   // debugger
   switch (action.type) {
     case ADD_POST:
-      const newPost = {
-        id: action.id,
-        message: state.CurrentText,
-        likes: '0'
+      return {
+        ...state,
+        PostsData: [...state.PostsData, {id: action.id, message: state.CurrentText, likes: '0'}],
+        CurrentText: '',
       }
-      state.PostsData.push(newPost)
-      // debugger
-      state.CurrentText = ''
-      // state.subscribeRender()
-      return state
     case UPD_POST:
-      state.CurrentText = action.value
-      // state.subscribeRender()
-      return state
+      // debugger
+      return {
+        ...state,
+        CurrentText: action.value
+      }
     default:
       return state
   }

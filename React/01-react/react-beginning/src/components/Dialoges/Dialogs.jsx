@@ -3,26 +3,30 @@ import styles from './Dialogs.module.css'
 import DialogItem from './DiaglogsItem/DialogsItem';
 import Message from './Messages/MessagesItems';
 import {addMessage, updMessageText} from '../../redux/reducers/messagesReducer';
+// import DialogsContainer from './DialogsContainer';
 
 const Dialogs = (props) => {
-  const propsData = props.dialogsState
-  const valueFromState = propsData.MessageText
+// debugger
+  let state = props.dialogPages
+  console.log('state:', state)
+  console.log('props:', props)
+  const valueFromState = state.MessageText
 
-  const dialogs = propsData.DialogsData.map(element => {
+  const dialogs = state.DialogsData.map(element => {
     return <DialogItem name={element.name} id={element.id}/>
   })
 
-  const messages = propsData.MessagesData.map(element => {
+  const messages = state.MessagesData.map(element => {
     return <Message message={element.message}/>
   })
 
   const addMessageToStore = () => {
-    props.dispatch(addMessage())
+    props.addMessage()
   }
 
   const updTextInArea = (event) => {
-    props.dispatch(updMessageText(event.target.value))
-    event.target.value = propsData.MessageText
+    props.updMessageText(event.target.value)
+    event.target.value = state.MessageText
   }
 
   return (
@@ -35,10 +39,10 @@ const Dialogs = (props) => {
           {messages}
         </div>
         <div>
-          <textarea onChange={updTextInArea} value={valueFromState}/>
+          <textarea onChange={ updTextInArea } value={valueFromState}/>
         </div>
         <div>
-          <button onClick={ addMessageToStore }>Add Message</button>
+          <button onClick={ addMessageToStore }> Add Message </button>
         </div>
       </div>
     </div>

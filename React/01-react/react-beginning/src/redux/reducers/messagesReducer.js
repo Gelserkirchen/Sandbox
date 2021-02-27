@@ -1,5 +1,5 @@
-export const ADD_MESSAGE = 'ADD_MESSAGE'
-export const UPD_MESSAGE_TEXT = 'UPD_MESSAGE_TEXT'
+const ADD_MESSAGE = 'ADD_MESSAGE'
+const UPD_MESSAGE_TEXT = 'UPD_MESSAGE_TEXT'
 
 export const addMessage = () => ({
   type: ADD_MESSAGE,
@@ -21,22 +21,22 @@ const initialState = {
     MessagesData: [
     {id: '1', message: 'Hello, world'}
   ],
-    MessageText: ''
+    MessageText: '123'
 }
 
 const messagesReducer = (state = initialState, action) => {
   switch (action.type) {
-    case UPD_MESSAGE_TEXT:
-      state.MessageText = action.value
-      return state
     case ADD_MESSAGE:
-      const objToPush = {
-        id: '777',
-        message: state.MessageText
+      return {
+        ...state,
+        MessagesData: [...state.MessagesData, {id: '777', message: state.MessageText}],
+        MessageText: ''
       }
-      state.MessagesData.push(objToPush)
-      state.MessageText = ''
-      return state
+    case UPD_MESSAGE_TEXT:
+      return {
+        ...state,
+        MessageText: action.value
+      }
     default:
       return state
   }

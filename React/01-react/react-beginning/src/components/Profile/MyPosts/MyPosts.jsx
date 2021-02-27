@@ -1,20 +1,29 @@
 import React from 'react'
 import styles from './MyPosts.module.css'
 import Post from './MyPost/Post';
+// import { MyPostsContainer } from './MyPostsContainer';
 
 const MyPosts = (props) => {
+  let state = props.profilePage
+  console.log('state:', state)
+  console.log('props:', props)
 
-  let posts = props.messages.map(element => {
+  let posts = state.PostsData.map(element => {
     return <Post message={element.message}/>
   })
 
   let addPostLink = React.createRef()
 
+  const updatePosts = (event) => {
+    props.updPost(event.target.value)
+    event.target.value = state.CurrentText
+  }
+
   return (
     <div>
       <h3>My posts</h3>
       <div>
-        <textarea onChange={ props.updPst } ref={ addPostLink } value={ props.currentText }/>
+        <textarea onChange={ updatePosts } ref={ addPostLink } value={ state.CurrentText }/>
       </div>
       <div className={ styles.buttons }>
         <button onClick={ props.addPost }>Add post</button>
