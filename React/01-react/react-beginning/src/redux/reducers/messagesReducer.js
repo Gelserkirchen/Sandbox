@@ -21,7 +21,7 @@ const initialState = {
     MessagesData: [
     {id: '1', message: 'Hello, world'}
   ],
-    MessageText: '123'
+    MessageText: ''
 }
 
 const messagesReducer = (state = initialState, action) => {
