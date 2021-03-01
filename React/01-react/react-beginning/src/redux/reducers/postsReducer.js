@@ -1,20 +1,39 @@
-import {ADD_MESSAGE, ADD_POST, UPD_MESSAGE_TEXT, UPD_POST, updMessageText, updPostAction} from '../store';
+const ADD_POST = 'ADD_POST'
+const UPD_POST = 'UPD_POST'
 
-const postsReducer = (state, action) => {
+export const addPostAction = (text) => ({
+  type: ADD_POST,
+  value: text
+})
+
+export const updPostAction = (text) => ({
+  type: UPD_POST,
+  value: text
+})
+
+const initialState = {
+  PostsData: [
+    {id: '1', message: 'Hi it is my first post'},
+    {id: '2', message: 'This is second post'}
+  ],
+  CurrentText: 'initial-text'
+}
+
+const postsReducer = (state = initialState, action) => {
+  // debugger
   switch (action.type) {
     case ADD_POST:
-      const newPost = {
-        id: action.id,
-        message: state.CurrentText,
-        likes: '0'
+      return {
+        ...state,
+        PostsData: [...state.PostsData, {id: action.id, message: state.CurrentText, likes: '0'}],
+        CurrentText: '',
       }
-      state.PostsData.push(newPost)
-      // debugger
-      state.CurrentText = ''
-      return state
     case UPD_POST:
-      state.CurrentText = action.value
-      return state
+      // debugger
+      return {
+        ...state,
+        CurrentText: action.value
+      }
     default:
       return state
   }
