@@ -3,13 +3,9 @@ import styles from './Dialogs.module.css'
 import DialogItem from './DiaglogsItem/DialogsItem';
 import Message from './Messages/MessagesItems';
 import {addMessage, updMessageText} from '../../redux/reducers/messagesReducer';
-// import DialogsContainer from './DialogsContainer';
 
 const Dialogs = (props) => {
-// debugger
   let state = props.dialogPages
-  console.log('state:', state)
-  console.log('props:', props)
   const valueFromState = state.MessageText
 
   const dialogs = state.DialogsData.map(element => {

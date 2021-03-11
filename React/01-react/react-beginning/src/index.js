@@ -9,7 +9,6 @@ import { Provider } from 'react-redux';
 
 
 export const rerenderEntireTree = (state) => {
-  // debugger
   ReactDOM.render(
     <React.StrictMode>
       <BrowserRouter>
@@ -22,16 +21,9 @@ export const rerenderEntireTree = (state) => {
   );
 }
 
-// debugger
 window.store = store
 rerenderEntireTree(store.getState())
-//
-// store.subscribe(() => {
-//   const getState = store.getState()
-//   rerenderEntireTree(getState)
-// })
 
-// store.subscribeRender()
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
