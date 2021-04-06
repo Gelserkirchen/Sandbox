@@ -10,7 +10,6 @@ import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import DialogsContainer from './components/Dialoges/DialogsContainer';
 import MyPostsContainer from './components/Profile/MyPosts/MyPostsContainer';
-import Users from './components/Users/Users';
 import UsersContainer from './components/Users/UsersContainer';
 
 
