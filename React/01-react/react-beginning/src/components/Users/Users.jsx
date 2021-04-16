@@ -1,52 +1,34 @@
 import React from 'react'
 import styles from './Users.module.css'
-import axios from 'axios';
 import photo from '../../assets/images/avatar.png'
-import {setUsersAction} from '../../redux/reducers/usersReducer';
 
-class Users extends React.Component{
+let Users = (props) => {
 
-  componentDidMount() {
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.usersOnPage}`).then(response => {
-      this.props.setUsers(response.data.items)
-      this.props.setTotalCountOfUsers(response.data.totalCount)
-    })
+  const numberOfPages = Math.ceil(props.usersCount / props.usersOnPage)
+
+  const pages = []
+
+  for (let i = 1; i <= 8; i++) {
+    if (i === 8) {
+      pages.push('...')
+      pages.push(numberOfPages)
+    } else {
+      pages.push(i)
+    }
   }
 
-  getNewData(pageNumber) {
-    this.props.setCurrentPageAction(pageNumber)
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.usersOnPage}`).then(response => {
-      this.props.setUsers(response.data.items)
-    })
-  }
-
-  render() {
-
-    const numberOfPages = Math.ceil(this.props.usersCount / this.props.usersOnPage)
-
-    const pages = []
-
-    for (let i = 1; i <= 8; i++) {
-        if (i === 8) {
-          pages.push('...')
-          pages.push(numberOfPages)
-        } else {
-          pages.push(i)
-        }
-      }
-
-    return (<div>
-      <div>
-        {
-          pages.map(number => {
-            // debugger
-            return <span className={this.props.currentPage === number ? styles.selectedPhoto : styles.unselectedItem}
-                         onClick={() => {this.getNewData(number)}} >{number}</span>
-          })
-        }
-      </div>
+  return (<div>
+    <div>
       {
-        this.props.usersData.map(u => <div key={u.id}>
+        pages.map(number => {
+
+          return <span className={props.currentPage === number ? styles.selectedPhoto : styles.unselectedItem}
+                       onClick={(e) => {props.getNewData(number)}} >{number}</span>
+        })
+      }
+    </div>
+    {
+      props.usersData.map(u => <div key={u.id}>
           <span>
             <div>
               <img src={u.photos.small === null ? photo : u.photos.small} alt="" className={styles.usersPhoto}/>
@@ -54,12 +36,12 @@ class Users extends React.Component{
             <div>
               {
                 u.followType === true
-                  ? <button onClick={() => { this.props.unfollowAction(u.id) }}> Unfollow </button>
-                  : <button onClick={() => { this.props.followAction(u.id) }}> Follow </button>
+                  ? <button onClick={() => { props.unfollowAction(u.id) }}> Unfollow </button>
+                  : <button onClick={() => { props.followAction(u.id) }}> Follow </button>
               }
             </div>
           </span>
-          <span>
+        <span>
             <span>
               <div>{u.name}</div>
               <div>{u.followType}</div>
@@ -70,11 +52,11 @@ class Users extends React.Component{
             </span>
 
           </span>
-        </div>)
-      }
-    </div>)
-  }
+      </div>)
+    }
+  </div>)
 }
+
 
 export default Users
 
