@@ -1,5 +1,6 @@
 const ADD_POST = 'ADD_POST'
 const UPD_POST = 'UPD_POST'
+const SET_USERS_PROFILE = 'SET_USERS_PROFILE'
 
 export const addPostAction = (text) => ({
   type: ADD_POST,
@@ -11,6 +12,11 @@ export const updPostAction = (text) => ({
   value: text
 })
 
+export const setProfileUsersAction = (data) => (
+  {type: SET_USERS_PROFILE,
+   data: data}
+)
+
 const initialState = {
   PostsData: [
     {id: '1', message: 'Hi it is my first post'},
@@ -19,7 +25,7 @@ const initialState = {
   CurrentText: 'initial-text'
 }
 
-const postsReducer = (state = initialState, action) => {
+const profileReducer = (state = initialState, action) => {
   // debugger
   switch (action.type) {
     case ADD_POST:
@@ -34,9 +40,15 @@ const postsReducer = (state = initialState, action) => {
         ...state,
         CurrentText: action.value
       }
+
+    case SET_USERS_PROFILE:
+      return {
+        ...state,
+        Avatar: action.data.photos
+      }
     default:
       return state
   }
 }
 
-export default postsReducer
+export default profileReducer

@@ -11,6 +11,7 @@ import Settings from './components/Settings/Settings';
 import DialogsContainer from './components/Dialoges/DialogsContainer';
 import MyPostsContainer from './components/Profile/MyPosts/MyPostsContainer';
 import UsersContainer from './components/Users/UsersContainer';
+import ProfileContainer from './components/Profile/ProfileContainer';
 
 
 const App = (props) => {
@@ -22,7 +23,7 @@ const App = (props) => {
         <NavBar/>
         <div className='app-wrapper-content'>
           <Route path='/Dialogs' render={() => <DialogsContainer/>}/>
-          <Route path='/Profile' render={() => <MyPostsContainer/>}/>
+          <Route path='/Profile' render={() => <ProfileContainer/>}/>
           <Route path='/Users' component={() => <UsersContainer/>}/>
           <Route path='/News' component={() => <News/>}/>
           <Route path='/Music' component={Music}/>
