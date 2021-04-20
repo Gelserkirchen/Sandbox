@@ -12,9 +12,9 @@ export const updPostAction = (text) => ({
   value: text
 })
 
-export const setProfileUsersAction = (data) => (
+export const setProfileUsersAction = (profile) => (
   {type: SET_USERS_PROFILE,
-   data: data}
+   value: profile}
 )
 
 const initialState = {
@@ -22,7 +22,8 @@ const initialState = {
     {id: '1', message: 'Hi it is my first post'},
     {id: '2', message: 'This is second post'}
   ],
-  CurrentText: 'initial-text'
+  CurrentText: 'initial-text',
+  profile: null
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -42,9 +43,11 @@ const profileReducer = (state = initialState, action) => {
       }
 
     case SET_USERS_PROFILE:
+      // debugger
+      // let x = action.value
       return {
         ...state,
-        Avatar: action.data.photos
+        profile: action.value
       }
     default:
       return state
