@@ -2,37 +2,20 @@ import React from 'react'
 import Users from './Users';
 import {connect} from 'react-redux';
 import {
-  followAction,
+  follow, unfollow,
   setCurrentPageAction,
   setTotalCountOfUsers,
   setUsersAction, toggleFetchingStatus,
-  unfollowAction, toggleButtonStatus
+  getUsers, 
+  toggleButtonStatus, 
 } from '../../redux/reducers/usersReducer';
-import axios from 'axios';
 import Preloader from '../MultiComponents/Preloader';
 
 class UsersContainer extends React.Component {
   props = {}
 
   componentDidMount() {
-    
-    // this.props.toggleButtonStatus(true)
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.usersOnPage}`).then(response => {
-      this.props.toggleFetchingStatus(false)
-      this.props.setUsersAction(response.data.items)
-      this.props.setTotalCountOfUsers(response.data.totalCount)
-      
-    })
-  }
-
-  getNewData = (pageNumber) => {
-    
-    this.props.setCurrentPageAction(pageNumber)
-    this.props.toggleButtonStatus(true)
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.usersOnPage}`).then(response => {
-      this.props.toggleFetchingStatus(false)
-      this.props.setUsersAction(response.data.items)
-    })
+    this.props.getUsers()
   }
 
   render() {
@@ -43,9 +26,9 @@ class UsersContainer extends React.Component {
         <Users usersCount={this.props.usersCount}
                usersOnPage={this.props.usersOnPage}
                currentPage={this.props.currentPage}
-               getNewData={this.getNewData}
-               unfollowAction={this.props.unfollowAction}
-               followAction={this.props.followAction}
+               getUsers={this.props.getUsers}
+               unfollow={this.props.unfollow}
+               follow={this.props.follow}
                usersData={this.props.usersData}
                toggleButtonStatus={this.props.toggleButtonStatus}
                buttonsDisabledArray={this.props.buttonsDisabledArray}
@@ -59,7 +42,6 @@ class UsersContainer extends React.Component {
 let mapStateToProps = (state) => {
 
   // console.log('mapStateToProps: ', state)
-
   return {
     usersData: state.usersPage.usersData,
     usersOnPage: state.usersPage.usersOnPage,
@@ -72,12 +54,13 @@ let mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, {
-  followAction,
-  unfollowAction,
+  follow,
+  unfollow,
   setUsersAction,
   setCurrentPageAction,
   setTotalCountOfUsers,
   toggleFetchingStatus,
   toggleButtonStatus,
+  getUsers
 })(UsersContainer)
 

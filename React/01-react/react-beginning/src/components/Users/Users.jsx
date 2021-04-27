@@ -2,12 +2,11 @@ import React from "react";
 import styles from "./Users.module.css";
 import photo from "../../assets/images/avatar.png";
 import { NavLink } from "react-router-dom";
-import axios from 'axios';
-import { usersAPI } from '../../api/api'
+// import axios from 'axios';
+// import { usersAPI } from '../../api/api'
+import { follow, unfollow } from "../../redux/reducers/usersReducer";
 
 let Users = (props) => {
-  // debugger
-  // let x = props;
 
   const numberOfPages = Math.ceil(props.usersCount / props.usersOnPage);
 
@@ -35,7 +34,7 @@ let Users = (props) => {
                   : styles.unselectedItem
               }
               onClick={(e) => {
-                props.getNewData(number);
+                props.getUsers(number);
               }}
             >
               {number}
@@ -59,25 +58,13 @@ let Users = (props) => {
               {u.followType === true ? (
                 <button
                   disabled = {props.buttonsDisabledArray.some(id => id === u.id)}
-                  onClick={() => {
-                    props.toggleButtonStatus(true, u.id)
-                    usersAPI.getUsersForUnfollow(u.id).then((response) => {
-                        props.unfollowAction(u.id);
-                        props.toggleButtonStatus(false, u.id)
-                    });
-                  }}
+                  onClick={ () => props.unfollow(u.id) }
                 >
                   {" "} Unfollow {" "} </button>) : 
               (
                 <button
                   disabled = {props.buttonsDisabledArray.some(id => id === u.id)}
-                  onClick={() => {
-                    props.toggleButtonStatus(true, u.id)
-                    usersAPI.getUsersForFollow(u.id).then(() => {
-                        props.followAction(u.id);
-                        props.toggleButtonStatus(false, u.id)
-                    });
-                  }}
+                  onClick={ () => props.follow(u.id) }
                 >
                   {" "}
                   Follow{" "}

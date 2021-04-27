@@ -1,4 +1,5 @@
-import {AxiosInstance as axios} from 'axios';
+import axios from 'axios';
+import { usersAPI } from '../../api/api'
 
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
@@ -76,3 +77,39 @@ export const toggleFetchingStatus = (isFetching) => ({type: TOGGLE_FETCHING_STAT
 export const toggleButtonStatus = (isFetching, userId) => ({type: TOGGLE_BUTTON_STATUS, isFetching, userId})
 
 export default usersReducer
+
+export const getUsers = (pageNumber = initialState.currentPageNumber) => {
+   return (dispatch) => {
+      
+      dispatch(setCurrentPageAction(pageNumber))
+      dispatch(toggleButtonStatus(true))
+      axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${initialState.usersOnPage}`).then(response => {
+        dispatch(toggleFetchingStatus(false))
+        dispatch(setUsersAction(response.data.items))
+
+        if (pageNumber === initialState.currentPageNumber) {
+           dispatch(setTotalCountOfUsers(response.data.totalCount))
+        }
+    })
+   }
+}
+
+export const unfollow = (userId) => {
+  return (dispatch) => {
+    dispatch(toggleButtonStatus(true, userId))
+    usersAPI.getUsersForUnfollow(userId).then((response) => {
+        dispatch(unfollowAction(userId))
+        dispatch(toggleButtonStatus(false, userId))
+    });
+  }
+}
+
+export const follow = (userId) => {
+  return (dispatch) => {
+    dispatch(toggleButtonStatus(true, userId))
+    usersAPI.getUsersForFollow(userId).then((response) => {
+        dispatch(followAction(userId))
+        dispatch(toggleButtonStatus(false, userId))
+    });
+  }
+}
