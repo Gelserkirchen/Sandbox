@@ -6,13 +6,15 @@ const SET_USERS = 'SET_USERS'
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 const SET_TOTAL_COUNT_OF_USERS = 'SET_TOTAL_COUNT_OF_USERS'
 const TOGGLE_FETCHING_STATUS = 'TOGGLE_FETCHING_STATUS'
+const TOGGLE_BUTTON_STATUS = 'TOGGLE_BUTTON_STATUS'
 
 const initialState = {
   usersData: [],
   usersOnPage: 5,
   countOfUsers: 19,
   currentPageNumber: 1,
-  isFetching: false
+  isFetching: false,
+  buttonsDisabledArray: [2, 3, 5]
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -50,6 +52,15 @@ const usersReducer = (state = initialState, action) => {
     case TOGGLE_FETCHING_STATUS: {
       return {...state, isFetching: action.isFetching}
     }
+    case TOGGLE_BUTTON_STATUS: {
+      // debugger
+      return {
+        ...state, 
+        buttonsDisabledArray: action.isFetching ? 
+        [...state.buttonsDisabledArray, action.userId] :
+        [state.buttonsDisabledArray.filter(id => id !== action.userId)]
+      }
+    }
 
     default:
       return state
@@ -62,5 +73,6 @@ export const setUsersAction = (users) => ({type: SET_USERS, users})
 export const setCurrentPageAction = (pageNumber) => ({type: SET_CURRENT_PAGE, pageNumber})
 export const setTotalCountOfUsers = (countOfUsers) => ({type: SET_TOTAL_COUNT_OF_USERS, countOfUsers})
 export const toggleFetchingStatus = (isFetching) => ({type: TOGGLE_FETCHING_STATUS, isFetching})
+export const toggleButtonStatus = (isFetching, userId) => ({type: TOGGLE_BUTTON_STATUS, isFetching, userId})
 
 export default usersReducer

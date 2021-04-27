@@ -7,12 +7,13 @@ import { usersAPI } from '../../api/api'
 
 let Users = (props) => {
   // debugger
-  let x = props;
+  // let x = props;
 
   const numberOfPages = Math.ceil(props.usersCount / props.usersOnPage);
 
   const pages = [];
 
+  // set only 8 pages instead of several thouthands 
   for (let i = 1; i <= 8; i++) {
     if (i === 8) {
       pages.push("...");
@@ -57,18 +58,24 @@ let Users = (props) => {
             <div>
               {u.followType === true ? (
                 <button
+                  disabled = {props.buttonsDisabledArray.some(id => id === u.id)}
                   onClick={() => {
+                    props.toggleButtonStatus(true, u.id)
                     usersAPI.getUsersForUnfollow(u.id).then((response) => {
                         props.unfollowAction(u.id);
+                        props.toggleButtonStatus(false, u.id)
                     });
                   }}
                 >
                   {" "} Unfollow {" "} </button>) : 
               (
                 <button
+                  disabled = {props.buttonsDisabledArray.some(id => id === u.id)}
                   onClick={() => {
+                    props.toggleButtonStatus(true, u.id)
                     usersAPI.getUsersForFollow(u.id).then(() => {
                         props.followAction(u.id);
+                        props.toggleButtonStatus(false, u.id)
                     });
                   }}
                 >

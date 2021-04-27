@@ -17,5 +17,4 @@ export const usersAPI = {
         const response = await axiosConfig.post(`follow/${userId}`)
         return response.data
     }
-
 }

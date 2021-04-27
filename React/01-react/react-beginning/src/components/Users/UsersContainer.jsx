@@ -6,7 +6,7 @@ import {
   setCurrentPageAction,
   setTotalCountOfUsers,
   setUsersAction, toggleFetchingStatus,
-  unfollowAction
+  unfollowAction, toggleButtonStatus
 } from '../../redux/reducers/usersReducer';
 import axios from 'axios';
 import Preloader from '../MultiComponents/Preloader';
@@ -15,17 +15,20 @@ class UsersContainer extends React.Component {
   props = {}
 
   componentDidMount() {
-    this.props.toggleFetchingStatus(true)
+    
+    // this.props.toggleButtonStatus(true)
     axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.usersOnPage}`).then(response => {
       this.props.toggleFetchingStatus(false)
       this.props.setUsersAction(response.data.items)
       this.props.setTotalCountOfUsers(response.data.totalCount)
+      
     })
   }
 
   getNewData = (pageNumber) => {
-    this.props.toggleFetchingStatus(true)
+    
     this.props.setCurrentPageAction(pageNumber)
+    this.props.toggleButtonStatus(true)
     axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.usersOnPage}`).then(response => {
       this.props.toggleFetchingStatus(false)
       this.props.setUsersAction(response.data.items)
@@ -44,6 +47,8 @@ class UsersContainer extends React.Component {
                unfollowAction={this.props.unfollowAction}
                followAction={this.props.followAction}
                usersData={this.props.usersData}
+               toggleButtonStatus={this.props.toggleButtonStatus}
+               buttonsDisabledArray={this.props.buttonsDisabledArray}
         />
       </>
 
@@ -60,7 +65,9 @@ let mapStateToProps = (state) => {
     usersOnPage: state.usersPage.usersOnPage,
     usersCount: state.usersPage.countOfUsers,
     currentPage: state.usersPage.currentPageNumber,
-    isFetching: state.usersPage.isFetching
+    isFetching: state.usersPage.isFetching,
+    toggleButtonStatus: state.usersPage.toggleButtonStatus,
+    buttonsDisabledArray: state.usersPage.buttonsDisabledArray
   }
 }
 
@@ -70,6 +77,7 @@ export default connect(mapStateToProps, {
   setUsersAction,
   setCurrentPageAction,
   setTotalCountOfUsers,
-  toggleFetchingStatus
+  toggleFetchingStatus,
+  toggleButtonStatus,
 })(UsersContainer)
 
