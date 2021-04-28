@@ -9,7 +9,8 @@ const reducers = combineReducers({
   profilePage: profileReducer,
   dialogPages: messagesReducer,
   usersPage: usersReducer,
-  auth: authReducer
+  auth: authReducer,
+  PCwithDataFromRouter: profileReducer
 })
 
 const store = createStore(reducers, applyMiddleware(thunk))

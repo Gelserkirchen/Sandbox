@@ -26,10 +26,10 @@ export const usersAPI = {
     },
 
     // get Profile for profileReducer
-    async getUserProfile (userId) {
-        debugger
+    async getUsersProfile (userId) {
         const response = await axiosConfig.get(`profile/${userId}`)
-        return response.data
+        console.log('response inside User API', response.data)
+        return response
     },
 
     // header container

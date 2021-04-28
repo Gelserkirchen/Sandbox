@@ -31,6 +31,10 @@ const initialState = {
 
 const profileReducer = (state = initialState, action) => {
   // debugger
+  if (!action) {
+    return 
+  }
+
   switch (action.type) {
     case ADD_POST:
       return {
@@ -47,7 +51,6 @@ const profileReducer = (state = initialState, action) => {
 
     case SET_USERS_PROFILE:
       debugger
-      // let x = action.value
       return {
         ...state,
         profile: action.value
@@ -59,10 +62,42 @@ const profileReducer = (state = initialState, action) => {
 
 export default profileReducer
 
-export const getProfile = (userId) => (dispatch) => {
-  usersAPI.getUserProfile(userId).then(response => {
-    debugger
-    console.log('i am here and here is response', response)
-    dispatch(setProfileUsersAction(response.data))
-  })
+
+// export const getProfile7 = (userId) => {
+//   return (dispatch) => {
+//     usersAPI.getUsersProfile(userId).then(response => {
+//       console.log('response from axios get profile from reducer = ', response.data)
+//       dispatch(setProfileUsersAction(response.data))
+//     })
+//   }
+// }
+
+// export const getProfile7 = (dispatch) => {
+
+//   const userId = 2
+//   usersAPI.getUsersProfile(userId).then(response => {
+//     console.log('yehraaa motherfucker')
+//     dispatch(setProfileUsersAction(response.data))
+//   })
+// }
+
+// export function getProfile7(userId) {
+//   return async function(dispatch) {
+//       const response = await usersAPI.getUsersProfile(userId)
+//     // dispatch
+//     dispatch({
+//       type: SET_USERS_PROFILE,
+//       value: response.data
+//     })
+//   };
+// }
+
+export const getProfile = (userId) => {
+  console.log('hello i am in getProfile7')
+  return (dispatch) => {
+    usersAPI.getUsersProfile(userId).then(response => {
+      console.log('i am really here getProfile7 forever')
+      dispatch(setProfileUsersAction(response.data))
+   })
+  }
 }
