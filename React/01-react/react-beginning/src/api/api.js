@@ -1,5 +1,4 @@
 import axios from 'axios'
-import React from 'react'
 
 const axiosConfig = axios.create({
     baseURL: `https://social-network.samuraijs.com/api/1.0/`,
@@ -8,13 +7,37 @@ const axiosConfig = axios.create({
 })
 
 export const usersAPI = {
+    // download users from server
+    async getUsers (pageNumber, usersOnPage) {
+        const response = await axiosConfig.get(`users?page=${pageNumber}&count=${usersOnPage}`)
+        return response.data
+    },
+
+    // follow button
     async getUsersForUnfollow (userId) {
         const response = await axiosConfig.delete(`follow/${userId}`)
         return response.data
     },
 
+    // unfollow button
     async getUsersForFollow (userId) {
         const response = await axiosConfig.post(`follow/${userId}`)
         return response.data
+    },
+
+    // get Profile for profileReducer
+    async getUserProfile (userId) {
+        debugger
+        const response = await axiosConfig.get(`profile/${userId}`)
+        return response.data
+    },
+
+    // header container
+    async authOnServer () {
+        const response = await axiosConfig.get(`auth/me`)
+        return response.data
     }
+
 }
+
+

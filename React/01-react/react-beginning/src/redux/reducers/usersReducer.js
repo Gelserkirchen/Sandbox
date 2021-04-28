@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { usersAPI } from '../../api/api'
 
 const FOLLOW = 'FOLLOW'
@@ -15,7 +14,7 @@ const initialState = {
   countOfUsers: 19,
   currentPageNumber: 1,
   isFetching: false,
-  buttonsDisabledArray: [2, 3, 5]
+  buttonsDisabledArray: []
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -83,12 +82,13 @@ export const getUsers = (pageNumber = initialState.currentPageNumber) => {
       
       dispatch(setCurrentPageAction(pageNumber))
       dispatch(toggleButtonStatus(true))
-      axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${initialState.usersOnPage}`).then(response => {
+
+      usersAPI.getUsers(pageNumber, initialState.usersOnPage).then(response => {
         dispatch(toggleFetchingStatus(false))
-        dispatch(setUsersAction(response.data.items))
+        dispatch(setUsersAction(response.items))
 
         if (pageNumber === initialState.currentPageNumber) {
-           dispatch(setTotalCountOfUsers(response.data.totalCount))
+           dispatch(setTotalCountOfUsers(response.totalCount))
         }
     })
    }

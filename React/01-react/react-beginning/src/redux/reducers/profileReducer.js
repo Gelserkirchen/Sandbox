@@ -1,3 +1,6 @@
+import { usersAPI } from '../../api/api'
+
+
 const ADD_POST = 'ADD_POST'
 const UPD_POST = 'UPD_POST'
 const SET_USERS_PROFILE = 'SET_USERS_PROFILE'
@@ -43,7 +46,7 @@ const profileReducer = (state = initialState, action) => {
       }
 
     case SET_USERS_PROFILE:
-      // debugger
+      debugger
       // let x = action.value
       return {
         ...state,
@@ -55,3 +58,11 @@ const profileReducer = (state = initialState, action) => {
 }
 
 export default profileReducer
+
+export const getProfile = (userId) => (dispatch) => {
+  usersAPI.getUserProfile(userId).then(response => {
+    debugger
+    console.log('i am here and here is response', response)
+    dispatch(setProfileUsersAction(response.data))
+  })
+}
