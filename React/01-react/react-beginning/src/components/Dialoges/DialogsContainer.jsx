@@ -1,10 +1,12 @@
 import {addMessage, updMessageText} from '../../redux/reducers/messagesReducer';
 import Dialogs from './Dialogs';
 import {connect} from 'react-redux';
+import {dialoges} from '../../redux/reducers/messagesReducer'
 
   const mapStateToProps = (state) => {
     return {
-      dialogPages: state.usersPage,
+      dialogPages: state.dialogPages,
+      isAuth: state.auth.isAuth
     }
   }
 

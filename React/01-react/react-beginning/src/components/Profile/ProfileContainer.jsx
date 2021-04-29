@@ -2,40 +2,32 @@ import { getProfile } from '../../redux/reducers/profileReducer'
 import React from 'react'
 import {connect} from 'react-redux';
 import Profile from './Profile';
-import {setProfileUsersAction} from './../../redux/reducers/profileReducer'
 import { withRouter } from 'react-router';
-
+import { Redirect } from 'react-router-dom';
 
 class ProfileContainer extends React.Component {
 
     componentDidMount() {
       let userId = this.props.match.params.userId
-      console.log('userId', userId)
-
       this.props.getProfile(userId)
-      // usersAPI.getUsersProfile(userId).then(response => {
-      //   console.log('response from axios get profile = ', response.data)
-      //   this.props.setProfileUsersAction(response.data)
-      // })
     }
 
     render() {
-      debugger
+      if (!this.props.isAuth) { return <Redirect to={"/login"}/> }
       return <Profile {...this.props.profile}/>
-
     }
 }
 
 let mapStateToProps = (state) => {
   return {
-    profile: state.profilePage
+    profile: state.profilePage,
+    isAuth: state.auth.isAuth
   }
 }
 
 let PCwithDataFromRouter = withRouter(ProfileContainer)
 
 export default connect(mapStateToProps, {
-  getProfile,
-  setProfileUsersAction
+  getProfile
 })(PCwithDataFromRouter)
 
