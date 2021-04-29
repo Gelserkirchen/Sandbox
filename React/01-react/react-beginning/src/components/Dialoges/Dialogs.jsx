@@ -3,8 +3,13 @@ import styles from './Dialogs.module.css'
 import DialogItem from './DiaglogsItem/DialogsItem';
 import Message from './Messages/MessagesItems';
 import {addMessage, updMessageText} from '../../redux/reducers/messagesReducer';
+import { Redirect } from 'react-router-dom';
 
 const Dialogs = (props) => {
+  if (!props.isAuth) {
+    return <Redirect to={"/login"}/>
+  }
+
   let state = props.dialogPages
   const valueFromState = state.MessageText
 

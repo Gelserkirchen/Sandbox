@@ -43,3 +43,9 @@ const messagesReducer = (state = initialState, action) => {
 }
 
 export default messagesReducer
+
+export const dialoges = (props) => {
+  return (dispatch) => {
+     
+  }
+}

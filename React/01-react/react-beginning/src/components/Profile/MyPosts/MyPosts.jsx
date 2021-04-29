@@ -5,8 +5,6 @@ import Post from './MyPost/Post';
 
 const MyPosts = (props) => {
   let state = props.profilePage
-  console.log('state:', state)
-  console.log('props:', props)
 
   let posts = state.PostsData.map(element => {
     return <Post message={element.message}/>

@@ -1,3 +1,6 @@
+import { usersAPI } from '../../api/api'
+
+
 const ADD_POST = 'ADD_POST'
 const UPD_POST = 'UPD_POST'
 const SET_USERS_PROFILE = 'SET_USERS_PROFILE'
@@ -12,9 +15,9 @@ export const updPostAction = (text) => ({
   value: text
 })
 
-export const setProfileUsersAction = (data) => (
+export const setProfileUsersAction = (profile) => (
   {type: SET_USERS_PROFILE,
-   data: data}
+   value: profile}
 )
 
 const initialState = {
@@ -22,11 +25,16 @@ const initialState = {
     {id: '1', message: 'Hi it is my first post'},
     {id: '2', message: 'This is second post'}
   ],
-  CurrentText: 'initial-text'
+  CurrentText: 'initial-text',
+  profile: null
 }
 
 const profileReducer = (state = initialState, action) => {
   // debugger
+  if (!action) {
+    return 
+  }
+
   switch (action.type) {
     case ADD_POST:
       return {
@@ -42,9 +50,10 @@ const profileReducer = (state = initialState, action) => {
       }
 
     case SET_USERS_PROFILE:
+      debugger
       return {
         ...state,
-        Avatar: action.data.photos
+        profile: action.value
       }
     default:
       return state
@@ -52,3 +61,11 @@ const profileReducer = (state = initialState, action) => {
 }
 
 export default profileReducer
+
+export const getProfile = (userId) => {
+  return (dispatch) => {
+    usersAPI.getUsersProfile(userId).then(response => {
+      dispatch(setProfileUsersAction(response.data))
+   })
+  }
+}

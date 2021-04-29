@@ -1,12 +1,13 @@
 import React from 'react'
 import ProfileInfo from './MyPosts/ProfileInfo/ProfileInfo';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
+import { Redirect } from 'react-router-dom';
 
 const Profile = (props) => {
 
   return (
     <div>
-      <ProfileInfo />
+      <ProfileInfo profile={props.profile}/>
       <MyPostsContainer store = {props.store} />
     </div>
   )
