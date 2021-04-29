@@ -10,6 +10,7 @@ import {
   toggleButtonStatus, 
 } from '../../redux/reducers/usersReducer';
 import Preloader from '../MultiComponents/Preloader';
+import { compose } from 'redux';
 
 class UsersContainer extends React.Component {
   props = {}
@@ -53,7 +54,7 @@ let mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {
+export default compose(connect(mapStateToProps, {
   follow,
   unfollow,
   setUsersAction,
@@ -62,5 +63,5 @@ export default connect(mapStateToProps, {
   toggleFetchingStatus,
   toggleButtonStatus,
   getUsers
-})(UsersContainer)
+}))(UsersContainer)
 

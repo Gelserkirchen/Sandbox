@@ -1,26 +1,33 @@
 import {addMessage, updMessageText} from '../../redux/reducers/messagesReducer';
 import Dialogs from './Dialogs';
 import {connect} from 'react-redux';
-import {dialoges} from '../../redux/reducers/messagesReducer'
+import { withAuthRedirectComponent } from '../HOC/withAuthRedirect'
+import { compose } from 'redux';
 
-  const mapStateToProps = (state) => {
-    return {
-      dialogPages: state.dialogPages,
-      isAuth: state.auth.isAuth
-    }
+const mapStateToProps = (state) => {
+  return {
+    dialogPages: state.dialogPages
   }
-
-  const mapDispatchToProps = (dispatch) => {
-    return {
-      addMessage: () => {
-        dispatch(addMessage())
-      } ,
-      updMessageText: (body) => {
-        dispatch(updMessageText(body))
-      }
-    }
 }
 
-  const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addMessage: () => {
+      dispatch(addMessage())
+    } ,
+    updMessageText: (body) => {
+      dispatch(updMessageText(body))
+    }
+  }
+}
 
-export default DialogsContainer
+// const withAuthRedirect = withAuthRedirectComponent(Dialogs)
+
+// const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(withAuthRedirect)
+
+// export default DialogsContainer
+
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withAuthRedirectComponent
+)(Dialogs)
