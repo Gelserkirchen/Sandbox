@@ -41,3 +41,24 @@ export const usersAPI = {
 }
 
 
+export const profileAPI = {
+    // get Profile for profileReducer
+    async getUsersProfile (userId) {
+        const response = await axiosConfig.get(`profile/${userId}`)
+        return response
+    },
+
+    async getStatus (userId) {
+        const response = await axiosConfig.get(`profile/status/${userId}`)
+        return response
+    },
+
+    async updateStatus (statusToPush) {
+        const response = await axiosConfig.put(`profile/status`, {
+            status: statusToPush
+        })
+        return response
+    },
+
+}
+
