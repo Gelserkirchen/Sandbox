@@ -10,6 +10,7 @@ const MyPosts = (props) => {
   })
 
   const submitMessage = (values) => {
+    debugger
     props.addPost(values.messageFormComponent)
   }
 
