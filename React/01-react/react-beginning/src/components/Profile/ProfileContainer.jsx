@@ -29,3 +29,6 @@ export default compose(
   connect(mapStateToProps, {getProfile, getProfileStatus, updateProfileStatus}),
   withRouter,
 )(ProfileContainer)
+
+
+
