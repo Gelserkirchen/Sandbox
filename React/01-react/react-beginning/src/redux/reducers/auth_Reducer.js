@@ -1,8 +1,10 @@
+import { authAPI } from '../../api/api'
+
 const SET_USER_DATA = 'SET_USER_DATA'
 
-export const authAction = (id, email, login) => ({
+export const authAction = (id, login, email, isAuth) => ({
     type: SET_USER_DATA,
-    data: {id, email, login}
+    data: {id, login, email, isAuth}
 })
 
 const initialState = {
@@ -18,8 +20,8 @@ const authReducer = (state = initialState, action) => {
         case SET_USER_DATA:
             return {
                 ...state,
-                ...action.data,
                 isAuth: true,
+                ...action.data,
             }
         default:
             return state
@@ -27,3 +29,20 @@ const authReducer = (state = initialState, action) => {
 }
 
 export default authReducer
+
+export const isIamLoggedIn = () => {
+    return (dispatch) => {
+        authAPI.me().then((response) => {
+            if (response.data.resultCode === 0) {
+                dispatch(authAction(
+                    response.data.data.id, 
+                    response.data.data.login, 
+                    response.data.data.email,
+                    true,
+                    ))
+            } else {
+                dispatch(authAction(null, null, null, false))
+            }
+      });
+    }
+}

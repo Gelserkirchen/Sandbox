@@ -32,12 +32,11 @@ export const usersAPI = {
         return response
     },
 
-    // header container
-    async authOnServer () {
-        const response = await axiosConfig.get(`auth/me`)
-        return response.data
-    }
-
+    // // header container
+    // async authOnServer () {
+    //     const response = await axiosConfig.get(`auth/me`)
+    //     return response.data
+    // }
 }
 
 
@@ -59,6 +58,27 @@ export const profileAPI = {
         })
         return response
     },
+}
 
+export const authAPI = {
+    async me () {
+        // debugger
+        const response = await axiosConfig.get(`auth/me`)
+        return response
+    },
+
+    async login (email, password, rememberMe) {
+        const response = await axiosConfig.post(`auth/login`, {
+            email,
+            password,
+            rememberMe
+        })
+        return response
+    },
+
+    async logout () {
+        const response = await axiosConfig.delete(`/auth/login`)
+        return response
+    },
 }
 
