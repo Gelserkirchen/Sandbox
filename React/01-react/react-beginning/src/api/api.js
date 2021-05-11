@@ -67,7 +67,7 @@ export const authAPI = {
         return response
     },
 
-    async login (email, password, rememberMe) {
+    async login (email, password, rememberMe = false) {
         const response = await axiosConfig.post(`auth/login`, {
             email,
             password,
@@ -77,6 +77,7 @@ export const authAPI = {
     },
 
     async logout () {
+        debugger
         const response = await axiosConfig.delete(`/auth/login`)
         return response
     },

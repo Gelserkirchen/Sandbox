@@ -13,7 +13,8 @@ import MyPostsContainer from './components/Profile/MyPosts/MyPostsContainer';
 import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
-import Login from './components/Login/Login'
+import LoginContainer from './components/Login/LoginContainer'
+// import Login from './components/Login/Login'
 
 const App = (props) => {
   // console.log('props in app', props)
@@ -29,7 +30,7 @@ const App = (props) => {
           <Route path='/News' component={() => <News/>}/>
           <Route path='/Music' component={Music}/>
           <Route path='/Settings' component={Settings}/>
-          <Route path='/Login' render={() => <Login/>}/>
+          <Route path='/Login' render={() => <LoginContainer/>}/>
         </div>
       </div>
   )
