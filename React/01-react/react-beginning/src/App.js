@@ -1,24 +1,31 @@
 import React from 'react'
 import './App.css'
-import Header from './components/Header/Header';
 import NavBar from './components/NavBar/NavBar';
-import Profile from './components/Profile/Profile';
-import Dialogs from './components/Dialoges/Dialogs';
 import Route from 'react-router-dom/es/Route';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import DialogsContainer from './components/Dialoges/DialogsContainer';
-import MyPostsContainer from './components/Profile/MyPosts/MyPostsContainer';
 import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
-import Login from './components/Login/Login'
+import LoginContainer from './components/Login/LoginContainer'
+import {connect} from 'react-redux';
+import Preloader from './components/MultiComponents/Preloader';
+import { compose } from 'redux';
+import {appInit} from './redux/reducers/appReducer';
 
-const App = (props) => {
-  // console.log('props in app', props)
+class App extends React.Component {
+  componentDidMount() {
+    this.props.appInit()
+  }
 
-  return (
+  render() {
+    if (!this.props.initialized) {
+      return <Preloader/>
+    }
+
+    return (
       <div className='app-wrapper'>
         <HeaderContainer/>
         <NavBar/>
@@ -29,10 +36,19 @@ const App = (props) => {
           <Route path='/News' component={() => <News/>}/>
           <Route path='/Music' component={Music}/>
           <Route path='/Settings' component={Settings}/>
-          <Route path='/Login' render={() => <Login/>}/>
+          <Route path='/Login' render={() => <LoginContainer/>}/>
         </div>
       </div>
-  )
+    )
+  }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  initialized: state.app.initialized
+})
+
+export default compose(
+  connect(mapStateToProps, {
+    appInit
+  }),
+)(App)

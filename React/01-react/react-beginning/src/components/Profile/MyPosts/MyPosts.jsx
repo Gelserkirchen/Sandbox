@@ -1,37 +1,49 @@
 import React from 'react'
 import styles from './MyPosts.module.css'
 import Post from './MyPost/Post';
-// import { MyPostsContainer } from './MyPostsContainer';
+import { reduxForm, Field } from 'redux-form'
+import { valueValidator, maxLengthValidator} from '../../Utils/Validators/validators'
+import { TextArea } from '../../MultiComponents/FormsControl/FormsControl';
+
+const maxLengthValidator10 = maxLengthValidator(10)
 
 const MyPosts = (props) => {
-  let state = props.profilePage
 
-  let posts = state.PostsData.map(element => {
+  let posts = props.profilePage.PostsData.map(element => {
     return <Post message={element.message}/>
   })
 
-  let addPostLink = React.createRef()
-
-  const updatePosts = (event) => {
-    props.updPost(event.target.value)
-    event.target.value = state.CurrentText
+  const submitMessage = (values) => {
+    props.addPost(values.messageFormComponent)
   }
 
   return (
     <div>
       <h3>My posts</h3>
-      <div>
-        <textarea onChange={ updatePosts } ref={ addPostLink } value={ state.CurrentText }/>
-      </div>
-      <div className={ styles.buttons }>
-        <button onClick={ props.addPost }>Add post</button>
-        <button>Remove</button>
-      </div>
+      <MessageReduxForm onSubmit={submitMessage}/>
       <div className={styles.posts}>
         {posts}
       </div>
     </div>
   )
 }
+
+const MessageComponent = (props) => {
+  return (
+    <form onSubmit={props.handleSubmit}>
+      <div>
+        <Field component={TextArea} 
+               name={"messageFormComponent"} 
+               placeholder={"enter text here"} 
+               validate={[valueValidator, maxLengthValidator10]}/>
+      </div>
+      <div className={ styles.buttons }>
+        <button>Add post</button>
+      </div>
+    </form>
+  )
+}
+
+const MessageReduxForm = reduxForm({form: 'profileMessages'})(MessageComponent)
 
 export default MyPosts

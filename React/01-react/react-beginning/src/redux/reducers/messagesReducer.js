@@ -1,12 +1,8 @@
 const ADD_MESSAGE = 'ADD_MESSAGE'
-const UPD_MESSAGE_TEXT = 'UPD_MESSAGE_TEXT'
+// const UPD_MESSAGE_TEXT = 'UPD_MESSAGE_TEXT'
 
-export const addMessage = () => ({
+export const addMessage = (text) => ({
   type: ADD_MESSAGE,
-})
-
-export const updMessageText = (text) => ({
-  type: UPD_MESSAGE_TEXT,
   value: text
 })
 
@@ -21,7 +17,6 @@ const initialState = {
     MessagesData: [
     {id: '1', message: 'Hello, world'}
   ],
-    MessageText: ''
 }
 
 const messagesReducer = (state = initialState, action) => {
@@ -29,13 +24,7 @@ const messagesReducer = (state = initialState, action) => {
     case ADD_MESSAGE:
       return {
         ...state,
-        MessagesData: [...state.MessagesData, {id: '777', message: state.MessageText}],
-        MessageText: ''
-      }
-    case UPD_MESSAGE_TEXT:
-      return {
-        ...state,
-        MessageText: action.value
+        MessagesData: [...state.MessagesData, {id: '777', message: action.value}],
       }
     default:
       return state
@@ -44,8 +33,8 @@ const messagesReducer = (state = initialState, action) => {
 
 export default messagesReducer
 
-export const dialoges = (props) => {
+export const addMessageToDialog = (text) => {
   return (dispatch) => {
-     
+     dispatch(addMessage(text))
   }
 }
