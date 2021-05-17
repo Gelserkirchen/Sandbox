@@ -6,8 +6,6 @@ import styles from '../Login/Login.module.css';
 import { Redirect } from 'react-router';
 
 
-// const maxLengthValidator10 = maxLengthValidator(10)
-
 const LoginForm = (props) => {
     // debugger
     return (
@@ -29,8 +27,7 @@ const Login = (props) => {
     const onSubmit = (formData) => {
         if (!props.isAuth) {
             props.login(formData.login, formData.password, formData.rememberMe)
-        } 
-        // console.log(formData)
+        }
     }
     
     if (props.isAuth) {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import {getAuthUserData} from '../../redux/reducers/auth_Reducer'
+import {getAuthUserData} from '../../redux/reducers/authReducer'
 
 let mapStateToProps = (state) => {
     // getAuthUserData()

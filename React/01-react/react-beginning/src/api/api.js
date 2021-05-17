@@ -62,7 +62,6 @@ export const profileAPI = {
 
 export const authAPI = {
     async me () {
-        // debugger
         const response = await axiosConfig.get(`auth/me`)
         return response
     },
@@ -77,7 +76,6 @@ export const authAPI = {
     },
 
     async logout () {
-        debugger
         const response = await axiosConfig.delete(`/auth/login`)
         return response
     },

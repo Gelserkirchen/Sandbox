@@ -1,8 +1,6 @@
-import {login} from '../../redux/reducers/auth_Reducer';
-// import Dialogs from './Dialogs';
+import {login} from '../../redux/reducers/authReducer';
 import {connect} from 'react-redux';
 import { compose } from 'redux';
-import { withAuthRedirectComponent } from '../HOC/withAuthRedirect'
 import Login from './Login'
 
 const mapStateToProps = (state) => {
