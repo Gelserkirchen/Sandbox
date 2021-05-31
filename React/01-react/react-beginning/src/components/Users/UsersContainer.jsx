@@ -11,6 +11,14 @@ import {
 } from '../../redux/reducers/usersReducer';
 import Preloader from '../MultiComponents/Preloader';
 import { compose } from 'redux';
+import {
+  getButtonDisabledInfo,
+  getButtonStatusToToggle,
+  getCountOfUsers, getFetchingStatus,
+  getPageNumber,
+  getUserDataFromState,
+  getUsersToSetThemOnPage
+} from '../../redux/reducers/usersSelector';
 
 class UsersContainer extends React.Component {
   props = {}
@@ -41,16 +49,14 @@ class UsersContainer extends React.Component {
 }
 
 let mapStateToProps = (state) => {
-
-  // console.log('mapStateToProps: ', state)
   return {
-    usersData: state.usersPage.usersData,
-    usersOnPage: state.usersPage.usersOnPage,
-    usersCount: state.usersPage.countOfUsers,
-    currentPage: state.usersPage.currentPageNumber,
-    isFetching: state.usersPage.isFetching,
-    toggleButtonStatus: state.usersPage.toggleButtonStatus,
-    buttonsDisabledArray: state.usersPage.buttonsDisabledArray
+    usersData: getUserDataFromState(state),
+    usersOnPage: getUsersToSetThemOnPage(state),
+    usersCount: getCountOfUsers(state),
+    currentPage: getPageNumber(state),
+    isFetching: getFetchingStatus(state),
+    toggleButtonStatus: getButtonStatusToToggle(state),
+    buttonsDisabledArray: getButtonDisabledInfo(state)
   }
 }
 

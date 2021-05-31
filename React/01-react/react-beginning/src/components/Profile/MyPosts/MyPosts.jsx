@@ -7,7 +7,7 @@ import { TextArea } from '../../MultiComponents/FormsControl/FormsControl';
 
 const maxLengthValidator10 = maxLengthValidator(10)
 
-const MyPosts = (props) => {
+const MyPosts = React.memo((props) => {
 
   let posts = props.profilePage.PostsData.map(element => {
     return <Post message={element.message}/>
@@ -26,15 +26,15 @@ const MyPosts = (props) => {
       </div>
     </div>
   )
-}
+})
 
 const MessageComponent = (props) => {
   return (
     <form onSubmit={props.handleSubmit}>
       <div>
-        <Field component={TextArea} 
-               name={"messageFormComponent"} 
-               placeholder={"enter text here"} 
+        <Field component={TextArea}
+               name={"messageFormComponent"}
+               placeholder={"enter text here"}
                validate={[valueValidator, maxLengthValidator10]}/>
       </div>
       <div className={ styles.buttons }>
