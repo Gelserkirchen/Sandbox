@@ -94,22 +94,30 @@ export const getUsers = (pageNumber = initialState.currentPageNumber) => {
    }
 }
 
+const toggleFollowStatus = (userId, dispatch, apiUsersMethod, actionMethod) => {
+  dispatch(toggleButtonStatus(true, userId))
+  const response = apiUsersMethod(userId)
+  if (response.resultCode === 0) {
+    dispatch(actionMethod(userId))
+    dispatch(toggleButtonStatus(false, userId))
+  }
+}
+
 export const unfollow = (userId) => {
-  return (dispatch) => {
-    dispatch(toggleButtonStatus(true, userId))
-    usersAPI.getUsersForUnfollow(userId).then((response) => {
-        dispatch(unfollowAction(userId))
-        dispatch(toggleButtonStatus(false, userId))
-    });
+  return async (dispatch) => {
+    const apiUsersMethod = await usersAPI.getUsersForUnfollow.bind(usersAPI)
+    const actionMethod = unfollowAction
+
+    toggleFollowStatus(userId, dispatch, apiUsersMethod, actionMethod)
+
   }
 }
 
 export const follow = (userId) => {
-  return (dispatch) => {
-    dispatch(toggleButtonStatus(true, userId))
-    usersAPI.getUsersForFollow(userId).then((response) => {
-        dispatch(followAction(userId))
-        dispatch(toggleButtonStatus(false, userId))
-    });
+  return async (dispatch) => {
+    const apiUsersMethod = await usersAPI.getUsersForFollow.bind(usersAPI)
+    const actionMethod = followAction
+
+    toggleFollowStatus(userId, dispatch, apiUsersMethod, actionMethod)
   }
 }
