@@ -43,7 +43,6 @@ class UsersContainer extends React.Component {
                buttonsDisabledArray={this.props.buttonsDisabledArray}
         />
       </>
-
     )
   }
 }

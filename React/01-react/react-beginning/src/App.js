@@ -10,10 +10,13 @@ import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import LoginContainer from './components/Login/LoginContainer'
-import {connect} from 'react-redux';
+import {connect, Provider} from 'react-redux';
 import Preloader from './components/MultiComponents/Preloader';
 import { compose } from 'redux';
 import {appInit} from './redux/reducers/appReducer';
+import {BrowserRouter} from 'react-router-dom';
+import store from './redux/redux-store';
+// import {rerenderEntireTree} from './index';
 
 class App extends React.Component {
   componentDidMount() {
@@ -26,19 +29,19 @@ class App extends React.Component {
     }
 
     return (
-      <div className='app-wrapper'>
-        <HeaderContainer/>
-        <NavBar/>
-        <div className='app-wrapper-content'>
-          <Route path='/Dialogs' render={() => <DialogsContainer/>}/>
-          <Route path='/Profile/:userId?' render={() => <ProfileContainer/>}/>
-          <Route path='/Users' component={() => <UsersContainer/>}/>
-          <Route path='/News' component={() => <News/>}/>
-          <Route path='/Music' component={Music}/>
-          <Route path='/Settings' component={Settings}/>
-          <Route path='/Login' render={() => <LoginContainer/>}/>
+        <div className='app-wrapper'>
+          <HeaderContainer/>
+          <NavBar/>
+          <div className='app-wrapper-content'>
+            <Route path='/Dialogs' render={() => <DialogsContainer/>}/>
+            <Route path='/Profile/:userId?' render={() => <ProfileContainer/>}/>
+            <Route path='/Users' component={() => <UsersContainer/>}/>
+            <Route path='/News' component={() => <News/>}/>
+            <Route path='/Music' component={Music}/>
+            <Route path='/Settings' component={Settings}/>
+            <Route path='/Login' render={() => <LoginContainer/>}/>
+          </div>
         </div>
-      </div>
     )
   }
 }
@@ -47,8 +50,18 @@ const mapStateToProps = (state) => ({
   initialized: state.app.initialized
 })
 
-export default compose(
-  connect(mapStateToProps, {
-    appInit
-  }),
+let AppContainer = compose(
+  connect(mapStateToProps, {appInit}),
 )(App)
+
+let SocialNetworkApp = (props) => {
+  return <BrowserRouter>
+    <Provider store={store}>
+        <AppContainer/>
+    </Provider>
+  </BrowserRouter>
+}
+
+
+
+export default SocialNetworkApp

@@ -52,7 +52,7 @@ let Users = (props) => {
               </NavLink>
             </div>
             <div>
-              {u.followed === true ? (
+              {u.followType === true ? (
                 <button
                   disabled = {props.buttonsDisabledArray.some(id => id === u.id)}
                   onClick={ () => props.unfollow(u.id) }

@@ -1,4 +1,5 @@
 import { usersAPI } from '../../api/api'
+import {updateObjectInArray} from '../../components/Utils/objectHelper';
 
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
@@ -22,23 +23,12 @@ const usersReducer = (state = initialState, action) => {
     case FOLLOW:
       return {
         ...state,
-        usersData:  state.usersData.map(u => {
-          if (u.id === action.userId) {
-            return {...u, followType: true}
-          }
-          return u
-        })
-
+        usersData: updateObjectInArray(state.usersData, action.userId, "id", {followType: true})
       }
     case UNFOLLOW:
       return {
         ...state,
-        usersData:  state.usersData.map(u => {
-          if (u.id === action.userId) {
-            return {...u, followType: false}
-          }
-          return u
-        })
+        usersData: updateObjectInArray(state.usersData, action.userId, "id", {followType: false})
       }
     case SET_USERS: {
       return {...state, usersData: action.users}
@@ -94,30 +84,23 @@ export const getUsers = (pageNumber = initialState.currentPageNumber) => {
    }
 }
 
-const toggleFollowStatus = (userId, dispatch, apiUsersMethod, actionMethod) => {
+const toggleFollowStatus = async (userId, dispatch, apiUsersMethod, actionMethod) => {
   dispatch(toggleButtonStatus(true, userId))
-  const response = apiUsersMethod(userId)
+  const response = await apiUsersMethod(userId)
   if (response.resultCode === 0) {
     dispatch(actionMethod(userId))
-    dispatch(toggleButtonStatus(false, userId))
   }
+  dispatch(toggleButtonStatus(false, userId))
 }
 
 export const unfollow = (userId) => {
   return async (dispatch) => {
-    const apiUsersMethod = await usersAPI.getUsersForUnfollow.bind(usersAPI)
-    const actionMethod = unfollowAction
-
-    toggleFollowStatus(userId, dispatch, apiUsersMethod, actionMethod)
-
+    await toggleFollowStatus(userId, dispatch, usersAPI.getUsersForUnfollow.bind(usersAPI), unfollowAction)
   }
 }
 
 export const follow = (userId) => {
   return async (dispatch) => {
-    const apiUsersMethod = await usersAPI.getUsersForFollow.bind(usersAPI)
-    const actionMethod = followAction
-
-    toggleFollowStatus(userId, dispatch, apiUsersMethod, actionMethod)
+    await toggleFollowStatus(userId, dispatch, usersAPI.getUsersForFollow.bind(usersAPI), followAction)
   }
 }

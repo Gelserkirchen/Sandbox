@@ -1,27 +1,24 @@
-import store from './redux/redux-store';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import SocialNetworkApp from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
+
 import { Provider } from 'react-redux';
+import store from './redux/redux-store';
 
 
 export const rerenderEntireTree = (state) => {
   ReactDOM.render(
-    <React.StrictMode>
-      <BrowserRouter>
-        <Provider store={store}>
-          <App />
-        </Provider>
-      </BrowserRouter>
-    </React.StrictMode>,
+      <SocialNetworkApp/>,
     document.getElementById('root')
   );
 }
 
-window.store = store
+// window.store = store
 rerenderEntireTree(store.getState())
 
-reportWebVitals();
+// reportWebVitals();
+
+
