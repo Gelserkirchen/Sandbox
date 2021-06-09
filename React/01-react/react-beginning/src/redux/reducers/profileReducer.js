@@ -61,32 +61,27 @@ export default profileReducer
 
 // Thunk for get profile 
 export const getProfile = (userId) => {
-  return (dispatch) => {
-    profileAPI.getUsersProfile(userId).then(response => {
-      dispatch(setProfileUsersAction(response.data))
-   })
+  return async (dispatch) => {
+    const response = await profileAPI.getUsersProfile(userId);
+    dispatch(setProfileUsersAction(response.data))
   }
 }
 
 // Thunk for get profile 
 export const getProfileStatus = (userId) => {
-  return (dispatch) => {
-    profileAPI.getStatus(userId).then(response => {
-      // debugger
-      dispatch(getProfileStatusAction(response.data))
-   })
+  return async (dispatch) => {
+    const response = await profileAPI.getStatus(userId)
+    dispatch(getProfileStatusAction(response.data))
   }
 }
 
 // Thunk for updating profile status
 export const updateProfileStatus = (status) => {
-  return (dispatch) => {
-    profileAPI.updateStatus(status).then(response => {
-      debugger
-      if (response.data.resultCode === 0) {
-        dispatch(getProfileStatusAction(status))
-      } 
-   })
+  return async (dispatch) => {
+    const response = await profileAPI.updateStatus(status)
+    if (response.data.resultCode === 0) {
+      dispatch(getProfileStatusAction(status))
+    }
   }
 }
 
