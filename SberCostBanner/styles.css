@@ -6,6 +6,14 @@
     line-height: 18px;
 }
 
+@keyframes scaling {
+    from {
+        transform: scale(1);
+    } to {
+        transform: scale(1.02);
+    }
+}
+
 body {
     margin: 0;
 }
@@ -34,15 +42,9 @@ body {
     position: absolute;
     top: 0;
     right: 0;
-    width: 333px;
-    height: 315px;
+    width: 313px;
+    height: 295px;
     z-index: -1;
-}
-
-.groups {
-    background-image: url("./images/Background_second.svg");
-    width: 776px;
-    height: 249px;
 }
 
 .greeting {
@@ -90,6 +92,10 @@ body {
     height: 145px;
 }
 
+.block__image:hover {
+    animation: scaling 1s ease-out;
+}
+
 .services_image {
     width: 442px;
     height: 232px;
@@ -129,7 +135,6 @@ body {
     background-position-y: top;
     align-items: flex-start;
     justify-content: space-between;
-
 }
 
 .block__theme_second {
@@ -142,6 +147,6 @@ body {
     height: 186px;
 }
 
-.div .section .header p{
-    border: 1px solid red;
+.text_decoration {
+    font-weight: 600;
 }
