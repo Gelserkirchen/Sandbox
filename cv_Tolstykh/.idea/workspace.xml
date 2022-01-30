@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6fe98fdb-e0e7-4b90-ac8d-a4203775f21f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../CostPlatform prj/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Resume/.idea/Resume.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Resume/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../untitled1/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cv_Tolstykh/pages/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cv_Tolstykh/vendors/fonts.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resume/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Resume/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cv_Tolstykh/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../cv_Tolstykh/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +41,13 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/../cv_Tolstykh" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -52,7 +58,7 @@
       <option name="presentableId" value="Default" />
       <updated>1641920255778</updated>
       <workItem from="1641920256734" duration="520000" />
-      <workItem from="1643523728031" duration="2768000" />
+      <workItem from="1643523728031" duration="19866000" />
     </task>
     <servers />
   </component>
