@@ -2,18 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6fe98fdb-e0e7-4b90-ac8d-a4203775f21f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../cv_Tolstykh/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../cv_Tolstykh/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cv_Tolstykh/images/__edu_gu.png" beforeDir="false" afterPath="$PROJECT_DIR$/../cv_Tolstykh/images/__edu_gu.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cv_Tolstykh/images/__edu_ielts.png" beforeDir="false" afterPath="$PROJECT_DIR$/../cv_Tolstykh/images/__edu_ielts.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cv_Tolstykh/images/__edu_js.png" beforeDir="false" afterPath="$PROJECT_DIR$/../cv_Tolstykh/images/__edu_js.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cv_Tolstykh/images/grey/IELTS_logo 1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cv_Tolstykh/images/grey/__edu_yandex.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cv_Tolstykh/images/grey/flat-color-icons_google.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cv_Tolstykh/images/grey/image 2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cv_Tolstykh/images/grey/image 4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cv_Tolstykh/images/grey/image 9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cv_Tolstykh/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../cv_Tolstykh/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cv_Tolstykh/pages/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../cv_Tolstykh/pages/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,12 +40,13 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/../cv_Tolstykh" />
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -66,7 +58,9 @@
       <option name="presentableId" value="Default" />
       <updated>1641920255778</updated>
       <workItem from="1641920256734" duration="520000" />
-      <workItem from="1643523728031" duration="34207000" />
+      <workItem from="1643523728031" duration="34492000" />
+      <workItem from="1643646910605" duration="5488000" />
+      <workItem from="1643697373984" duration="22000" />
     </task>
     <servers />
   </component>

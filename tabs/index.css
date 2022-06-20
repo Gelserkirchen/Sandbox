@@ -1,0 +1,59 @@
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.button {
+    width: 100px;
+    height: 90px;
+    margin: 10px 4px 0;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-color: grey;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 10px;
+    justify-content: center;
+    text-align: center;
+
+}
+
+.cover-background {
+    width: 100px;
+    height: 90px;
+    margin: 10px 4px 0;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background: linear-gradient(#000000 0%, rgba(46, 44, 121, 0.5833) 53.65%, rgba(98, 94, 246, 0) 100%);
+    z-index: 1;
+}
+
+.button-ispolnenie {
+    background-image: url("https://images.pexels.com/photos/6532373/pexels-photo-6532373.jpeg?cs=srgb&dl=pexels-nataliya-vaitkevich-6532373.jpg&fm=jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+}
+
+.button:first-of-type {
+    margin-left: 0px;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+.content {
+    width: 500px;
+    height: 500px;
+    background-color: cornflowerblue;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.button-active {
+    background-color: cornflowerblue;
+    justify-content: center;
+}
